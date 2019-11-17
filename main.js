@@ -2,6 +2,11 @@ const auth = require('./credentials.json');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+// (0) corejs import (bad practise, needs to be improved to be exported as a module)
+
+var fs = require('fs');
+eval(fs.readFileSync('./core.js') + '');
+
 // (1) client start
 
 client.login(auth.token);
@@ -39,20 +44,23 @@ client.on('message', msg => {
                 .setFooter('the all-in-one community managment solution');
             msg.channel.send(embed);
         } else if (cmd == "setkey") {
-            if (args.length > 1) {
-                const embed = new Discord.RichEmbed()
-                    .setColor('#ff8a65')
-                    .addField('Sorry, this is not ready yet', 'This is a development version', false)
-                    .setTimestamp()
-                    .setFooter('the all-in-one community managment solution');
-                msg.channel.send(embed);
-            } else {
+            if (args.length < 2) {
                 const embed = new Discord.RichEmbed()
                     .setColor('#ff8a65')
                     .addField('Invalid params', 'You need a second param in order to execute this command', false)
                     .setTimestamp()
                     .setFooter('the all-in-one community managment solution');
                 msg.channel.send(embed);
+            } else {
+                var coreInstance = new Core(args[2])
+                coreInstance.getInstance().asNetwork().setGuild(msg.guild.id).then((successMessage) => {
+                    const embed = new Discord.RichEmbed()
+                        .setColor('#ff8a65')
+                        .addField('🔗', 'This instance has been linked to this guild', false)
+                        .setTimestamp()
+                        .setFooter('the all-in-one community managment solution');
+                    msg.channel.send(embed);
+                });
             }
         } else {
 
