@@ -1,6 +1,7 @@
 const auth = require('./credentials.json');
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const fetch = require("node-fetch");
 
 // (0) corejs import (bad practise, needs to be improved to be exported as a module)
 
@@ -44,23 +45,25 @@ client.on('message', msg => {
                 .setFooter('the all-in-one community managment solution');
             msg.channel.send(embed);
         } else if (cmd == "setkey") {
-            if (args.length < 2) {
-                const embed = new Discord.RichEmbed()
-                    .setColor('#ff8a65')
-                    .addField('Invalid params', 'You need a second param in order to execute this command', false)
-                    .setTimestamp()
-                    .setFooter('the all-in-one community managment solution');
-                msg.channel.send(embed);
-            } else {
-                var coreInstance = new Core(args[2])
+
+            msg.delete()
+            if (args.length = 3) {
+                var coreInstance = new Core(args[3])
                 coreInstance.getInstance().asNetwork().setGuild(msg.guild.id).then((successMessage) => {
                     const embed = new Discord.RichEmbed()
                         .setColor('#ff8a65')
-                        .addField('🔗', 'This instance has been linked to this guild', false)
+                        .addField('🔗', 'This instance has been linked to this guild. The message has been deleted in order to prevent your keys to be copied.', false)
                         .setTimestamp()
                         .setFooter('the all-in-one community managment solution');
                     msg.channel.send(embed);
                 });
+            } else {
+                const embed = new Discord.RichEmbed()
+                    .setColor('#ff8a65')
+                    .addField('Invalid params', 'You need a second param in order to execute this command. The message has been deleted in order to prevent your keys to be copied.', false)
+                    .setTimestamp()
+                    .setFooter('the all-in-one community managment solution');
+                msg.channel.send(embed);
             }
         } else {
 

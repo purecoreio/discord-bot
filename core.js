@@ -58,7 +58,7 @@ var Core = /** @class */ (function () {
         return new Elements(this);
     };
     Core.prototype.getInstance = function (instanceId, name, type) {
-        new Instance(this, instanceId, name, type);
+        return new Instance(this, instanceId, name, type);
     };
     return Core;
 }());
