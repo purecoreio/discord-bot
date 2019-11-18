@@ -144,6 +144,27 @@ client.on('message', msg => {
 
             msg.delete()
 
+        } else if (cmd == "link") {
+
+            new Core().fromDiscord(msg.guild.id, auth.token, true).then(function (core) {
+
+                var url = "https://api.purecore.io/link/discord/associate/?key=" + core.getKey();
+                const embed = new Discord.RichEmbed()
+                    .setColor('#ff8a65')
+                    .addField('Link your account', 'Link your game accounts by [clicking here](' + url + ')', false)
+                    .setThumbnail(msg.author.avatarURL)
+                    .setTimestamp()
+                    .setFooter('the all-in-one community managment solution');
+                msg.channel.send(embed);
+
+            }).catch(function (reason) {
+                const embed = new Discord.RichEmbed()
+                    .setColor('#ff8a65')
+                    .addField('❌ There was an error while generating your authentication url', reason, false)
+                    .setTimestamp()
+                    .setFooter('the all-in-one community managment solution');
+                msg.channel.send(embed);
+            });
         } else {
 
             const embed = new Discord.RichEmbed()
