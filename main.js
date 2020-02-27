@@ -30,7 +30,7 @@ client.on('message', msg => {
                         core.getInstance().asNetwork().setDonationChannel(msg.channel.id).then((core) => {
 
                             const embed = new Discord.RichEmbed()
-                                .setColor('#ff8a65')
+                                .setColor('#448aff')
                                 .addField('🔗', 'The donation events will now appear on this channel', false)
                                 .setTimestamp()
                                 .setFooter('the all-in-one community managment solution');
@@ -38,7 +38,7 @@ client.on('message', msg => {
 
                         }).catch(function (reason) {
                             const embed = new Discord.RichEmbed()
-                                .setColor('#ff8a65')
+                                .setColor('#448aff')
                                 .addField('There was an error while linking the guild with your donation events', reason, false)
                                 .setTimestamp()
                                 .setFooter('the all-in-one community managment solution');
@@ -49,7 +49,7 @@ client.on('message', msg => {
 
                 } else {
                     const embed = new Discord.RichEmbed()
-                        .setColor('#ff8a65')
+                        .setColor('#448aff')
                         .addField('❌ You\'re not an administrator!', 'You need to have the ADMINISTRATOR permission in order to execute this command.', false)
                         .setTimestamp()
                         .setFooter('the all-in-one community managment solution');
@@ -69,7 +69,7 @@ client.on('message', msg => {
                         core.getInstance().asNetwork().setSessionChannel(msg.channel.id).then((core) => {
 
                             const embed = new Discord.RichEmbed()
-                                .setColor('#ff8a65')
+                                .setColor('#448aff')
                                 .addField('🔗', 'The session events will now appear on this channel', false)
                                 .setTimestamp()
                                 .setFooter('the all-in-one community managment solution');
@@ -77,7 +77,7 @@ client.on('message', msg => {
 
                         }).catch(function (reason) {
                             const embed = new Discord.RichEmbed()
-                                .setColor('#ff8a65')
+                                .setColor('#448aff')
                                 .addField('There was an error while linking the guild with your session events', reason, false)
                                 .setTimestamp()
                                 .setFooter('the all-in-one community managment solution');
@@ -88,7 +88,7 @@ client.on('message', msg => {
 
                 } else {
                     const embed = new Discord.RichEmbed()
-                        .setColor('#ff8a65')
+                        .setColor('#448aff')
                         .addField('❌ You\'re not an administrator!', 'You need to have the ADMINISTRATOR permission in order to execute this command.', false)
                         .setTimestamp()
                         .setFooter('the all-in-one community managment solution');
@@ -107,14 +107,14 @@ client.on('message', msg => {
                     if (msg.member.hasPermission('ADMINISTRATOR', false, false)) {
                         coreInstance.getInstance().asNetwork().setGuild(msg.guild.id).then((successMessage) => {
                             const embed = new Discord.RichEmbed()
-                                .setColor('#ff8a65')
+                                .setColor('#448aff')
                                 .addField('🔗', 'This instance has been linked to this guild. The message has been deleted in order to prevent your keys to be copied.', false)
                                 .setTimestamp()
                                 .setFooter('the all-in-one community managment solution');
                             msg.channel.send(embed);
                         }).catch(function (reason) {
                             const embed = new Discord.RichEmbed()
-                                .setColor('#ff8a65')
+                                .setColor('#448aff')
                                 .addField('There was an error while linking the guild with your instance', reason, false)
                                 .setTimestamp()
                                 .setFooter('the all-in-one community managment solution');
@@ -122,7 +122,7 @@ client.on('message', msg => {
                         });;
                     } else {
                         const embed = new Discord.RichEmbed()
-                            .setColor('#ff8a65')
+                            .setColor('#448aff')
                             .addField('❌ You\'re not an administrator!', 'You need to have the ADMINISTRATOR permission in order to execute this command.', false)
                             .setTimestamp()
                             .setFooter('the all-in-one community managment solution');
@@ -134,7 +134,7 @@ client.on('message', msg => {
             } else {
 
                 const embed = new Discord.RichEmbed()
-                    .setColor('#ff8a65')
+                    .setColor('#448aff')
                     .addField('Invalid params', 'You need a second param in order to execute this command. The message has been deleted in order to prevent your keys to be copied.', false)
                     .setTimestamp()
                     .setFooter('the all-in-one community managment solution');
@@ -151,7 +151,7 @@ client.on('message', msg => {
 
                     var url = "https://api.purecore.io/link/discord/associate/?key=" + core.getKey();
                     const embed = new Discord.RichEmbed()
-                        .setColor('#ff8a65')
+                        .setColor('#448aff')
                         .addField('Link your account', 'Link your game accounts by [clicking here](' + url + ')', false)
                         .setThumbnail(msg.author.avatarURL)
                         .setTimestamp()
@@ -160,7 +160,7 @@ client.on('message', msg => {
 
                 }).catch(function (reason) {
                     const embed = new Discord.RichEmbed()
-                        .setColor('#ff8a65')
+                        .setColor('#448aff')
                         .addField('❌ There was an error while generating your authentication url', reason, false)
                         .setTimestamp()
                         .setFooter('the all-in-one community managment solution');
@@ -172,7 +172,7 @@ client.on('message', msg => {
 
                         var url = "https://api.purecore.io/link/discord/associate/?key=" + core.getKey();
                         const embed = new Discord.RichEmbed()
-                            .setColor('#ff8a65')
+                            .setColor('#448aff')
                             .addField('Global profile linking', 'Link your game accounts by [clicking here](' + url + ')', false)
                             .setThumbnail(msg.guild.iconURL)
                             .setTimestamp()
@@ -181,7 +181,7 @@ client.on('message', msg => {
 
                     }).catch(function (reason) {
                         const embed = new Discord.RichEmbed()
-                            .setColor('#ff8a65')
+                            .setColor('#448aff')
                             .addField('❌ There was an error while generating your authentication url', reason, false)
                             .setTimestamp()
                             .setFooter('the all-in-one community managment solution');
@@ -189,7 +189,7 @@ client.on('message', msg => {
                     });
                 } else {
                     const embed = new Discord.RichEmbed()
-                        .setColor('#ff8a65')
+                        .setColor('#448aff')
                         .addField('❌ Unknown argument', false)
                         .setTimestamp()
                         .setFooter('the all-in-one community managment solution');
@@ -200,7 +200,7 @@ client.on('message', msg => {
         } else {
 
             const embed = new Discord.RichEmbed()
-                .setColor('#ff8a65')
+                .setColor('#448aff')
                 .setTitle('core. help')
                 .setDescription('Welcome to [purecore.io](https://purecore.io/)!')
                 .setAuthor('quiquelhappy', 'https://i.imgur.com/OAQblee.png', 'https://twitter.com/quiquelhappy/')
